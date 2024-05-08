@@ -21,12 +21,13 @@ internal class Program
 		}
 
 		var config = Config.Load(configPath);
+		string configDir = Path.GetDirectoryName(configPath)!;
 		foreach (string codepoint in config.Codepoints)
 		{
-			string oldPath = Path.Combine(config.SourcePath, $"{codepoint}.svg");
+			string oldPath = Path.GetFullPath(Path.Combine(configDir, config.SourcePath, $"{codepoint}.svg"));
 			string name = EmojiHelper.GetEmojiName(codepoint);
 			string filename = name.ToKebabCase();
-			string newPath = Path.Combine(config.DestinationPath, $"{filename}.svg");
+			string newPath = Path.GetFullPath(Path.Combine(configDir, config.DestinationPath, $"{filename}.svg"));
 
 			try
 			{
