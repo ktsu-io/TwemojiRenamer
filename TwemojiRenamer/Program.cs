@@ -1,5 +1,6 @@
 namespace ktsu.io.TwemojiRenamer;
 
+using EmojiToolkit;
 using ktsu.io.CaseConverter;
 
 internal class Program
@@ -24,7 +25,7 @@ internal class Program
 		foreach (string codepoint in config.Codepoints)
 		{
 			string oldPath = Path.GetFullPath(Path.Combine(configDir, config.SourcePath, $"{codepoint}.svg"));
-			string name = EmojiToolkit.Emoji.Get(codepoint).Name;
+			string name = Emoji.Get(Emoji.FromCodePoint(codepoint)).Name;
 			string filename = name.ToKebabCase();
 			string newPath = Path.GetFullPath(Path.Combine(configDir, config.DestinationPath, $"{filename}.svg"));
 
