@@ -1,4 +1,4 @@
-﻿namespace ktsu.io.TwemojiRenamer;
+namespace ktsu.io.TwemojiRenamer;
 
 using EmojiHelper;
 using ktsu.io.CaseConverter;
@@ -39,7 +39,8 @@ internal class Program
 			}
 			catch (DirectoryNotFoundException)
 			{
-				Console.WriteLine($"Directory not found: {config.DestinationPath}");
+				Console.WriteLine($"Directory not found: {oldPath} => {newPath}");
+				Console.WriteLine(Environment.CurrentDirectory);
 			}
 		}
 	}
